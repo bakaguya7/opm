@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Fight</title>
+    <style>
+        .container {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            display: grid;
+            grid-template-columns: 30% 30% 30%;
+            padding: 12%;
+            justify-content: center;
+            align-items: center;
+        }
+        .box {
+            width: 300px;
+            height: 300px;
+            border-radius: 20px;
+            /*  */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box > img {
+            border-radius: 10px;
+            object-fit: contain;
+            width: 100%;
+            max-height: 100%;
+        }
+        button {
+            height: 150px;
+            width: 150px;
+            padding: 10px;
+            border-radius: 20px;
+            border: 0;
+            background-color: black;
+            padding: 20px;
+        }
+        button > img {
+            border-radius: 10px;
+            object-fit: cover;
+            width: 100%;
+            max-height: 100%;
+            filter: invert(10%) sepia(100%) saturate(7055%) hue-rotate(10deg) brightness(96%) contrast(110%);
+        }
+        .desc1 {
+            display: none;
+            width: 250px;
+            height: 250px;
+            border-radius: 20px;
+            object-fit: cover;
+            background-color: whitesmoke;
+            padding: 10px;
+            font-size: 8pt;
+        }
+        .desc1 .header {
+            padding: 5px;
+            text-align: center;
+        }
+        .desc1 .stat {
+            padding: 10px;
+            display: grid;
+            grid-template-columns: 40% 60%;
+        }
+        .desc1 .stat > div {
+            padding: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box" style="background-color: blue;">
+            <div class="desc1" id="desc1">
+                <div class="header">
+                    <h2>ONE PUNCH MAN CHARACTERS</h2>
+                </div>
+                <div class="stat">
+                    <div>DURABILITY</div>
+                    <!-- <div>:</div> -->
+                    <div>
+                        <progress value="90" max="100"></progress>
+                    </div>
+                    <div>POWER</div>
+                    <!-- <div>:</div> -->
+                    <div>
+                        <progress value="89" max="100"></progress>
+                    </div>
+                    <div>SPEED</div>
+                    <!-- <div>:</div> -->
+                    <div>
+                        <progress value="80" max="100"></progress>
+                    </div>
+                    <div>IQ</div>
+                    <!-- <div>:</div> -->
+                    <div>
+                        <progress value="99" max="100"></progress>
+                    </div>
+                </div>
+            </div>
+            <img id="chara1" src="" alt="">
+        </div>
+        <div class="box">
+            <button id="btn">
+                <img src="sword-icon.svg" alt="">
+            </button>
+        </div>
+        <div class="box" style="background-color: red;">
+            <img id="chara2" src="" alt="">
+        </div>
+    </div>
+    <script>
+        let allChara = new Array();
+        allChara[0] = new Image(); allChara[0].src = 'img/genos.png';
+        allChara[1] = new Image(); allChara[1].src = 'img/tatsumaki.jpg';
+        allChara[2] = new Image(); allChara[2].src = 'img/garou.jpg';
+        allChara[3] = new Image(); allChara[3].src = 'img/silverfang.jpg';
+        allChara[4] = new Image(); allChara[4].src = 'img/garoucosmic.jpg';
+        allChara[5] = new Image(); allChara[5].src = 'img/saitama.jpg';
+        // allChara[4] = new Image(); allChara[4].src = 'img/kurumi.jpg';
+
+        function getRandomChara(){
+            let randomNumber = Math.floor(Math.random() * (allChara.length));
+            let randomChara = allChara[randomNumber];
+            return randomChara;
+        }
+
+        function chara1() {
+		    let select = getRandomChara();
+            let chara1 = document.getElementById("chara1");
+            let desc1 = document.getElementById("desc1");
+            chara1.src = select.src;
+            // chara1.onclick = function(){
+            //     alert("TEST!");
+            // }
+            chara1.style.display = "block";
+            desc1.style.display = "none";
+        }
+
+        function chara2() {
+		    let select = getRandomChara();
+            document.getElementById("chara2").src = select.src;
+        }
+
+        document.getElementById("btn").addEventListener('click',() => {    
+            chara1();
+            chara2();
+        },false);
+    </script>
+</body>
+</html>
